@@ -868,8 +868,6 @@ game_show_engine = game_show_engine.replace("__PLAYERS_PLACEHOLDER__", serialize
 game_show_engine = game_show_engine.replace("__CATEGORIES_PLACEHOLDER__", serialized_categories_pack)
 
 # --- BASE64 DATA PACKAGED PIPELINE ---
-b64_compiled_matrix = base64.b64encode(game_show_engine.encode("utf-8")).decode("utf-8")
-data_uri_target = f"data:text/html;base64,{b64_compiled_matrix}"
 
 # --- CSS FULL-SCREEN IFRAME PORT BUFFER SAFEGUARD OVERRIDES ---
 st.markdown("""
@@ -882,5 +880,6 @@ st.markdown("""
         div[data-testid="stBlock"] { padding: 0 !important; }
     </style>
 """, unsafe_allow_html=True)
-
-st.iframe(data_uri_target)
+# ADD THESE LINES INSTEAD
+import streamlit.components.v1 as components
+components.html(game_show_engine, height=900, scrolling=False)
