@@ -473,7 +473,7 @@ game_show_engine = """
         
         <div class="stage-header">
             <h1>🎡 Wheel of Fun Friday</h1>
-            <p>Premium Reward Terminal</p>
+            <p>UK LM DAIS Daily Team</p>
         </div>
 
         <div class="wheel-theater" id="wheelTheater">
