@@ -883,3 +883,13 @@ st.markdown("""
 # ADD THESE LINES INSTEAD
 import streamlit.components.v1 as components
 components.html(game_show_engine, height=900, scrolling=False)
+def render_arcade_app(html_str):
+    # Encode the entire HTML string to base64
+    b64_html = base64.b64encode(html_str.encode()).decode()
+    # Create the data URI
+    data_url = f"data:text/html;base64,{b64_html}"
+    # Use iframe, but point it to the local base64 blob
+    st.components.v1.iframe(data_url, height=900, scrolling=False)
+
+# Render
+render_arcade_app(game_show_engine)
