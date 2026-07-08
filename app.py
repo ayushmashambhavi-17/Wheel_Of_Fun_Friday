@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import base64
+import streamlit.components.v1 as components
 
 # --- IMMERSIVE VIEWPORT CONFIGURATION SETUP ---
 st.set_page_config(
@@ -113,7 +114,7 @@ CATEGORIES_DATA = {
 
 MEMBERS = [
     "Ajaz", "Amit", "Ankur", "Anushree", "Arpit", "Atharva", "Ayush", "Ayushma",
-    "Bhabesh", "Gautam", "Jeet", "Kali", "Kartiki", "Obaiah", "Irfan", "Neha",
+    "Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
     "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni", "Saket", "Sampada", "Shailavi",
     "Shubham", "Shubhangi", "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
 ]
@@ -871,7 +872,7 @@ game_show_engine = game_show_engine.replace("__CATEGORIES_PLACEHOLDER__", serial
 
 # --- CSS FULL-SCREEN IFRAME PORT BUFFER SAFEGUARD OVERRIDES ---
 st.markdown("""
-    <style>
+<style>
         [data-testid="stAppViewContainer"], .main, .block-container {
             padding: 0 !important; margin: 0 !important; max-width: 100vw !important; height: 100vh !important; overflow: hidden !important;
         }
@@ -880,16 +881,17 @@ st.markdown("""
         div[data-testid="stBlock"] { padding: 0 !important; }
     </style>
 """, unsafe_allow_html=True)
-# ADD THESE LINES INSTEAD
-import streamlit.components.v1 as components
-components.html(game_show_engine, height=900, scrolling=False)
-def render_arcade_app(html_str):
-    # Encode the entire HTML string to base64
-    b64_html = base64.b64encode(html_str.encode()).decode()
-    # Create the data URI
-    data_url = f"data:text/html;base64,{b64_html}"
-    # Use iframe, but point it to the local base64 blob
-    st.components.v1.iframe(data_url, height=900, scrolling=False)
+# --- STABLE CLOUD BINDING ENGINE ---
+def run_app_securely(html_string):
+    # Encode the HTML as a base64 string
+    b64_html = base64.b64encode(html_string.encode('utf-8')).decode('utf-8')
+    
+    # Create a data URI that is treated as a local, secure sandbox by the browser
+    data_uri = f"data:text/html;base64,{b64_html}"
+    
+    # Use components.iframe to render the data URI
+    # This bypasses the 401 error by avoiding external network requests
+    components.iframe(src=data_uri, height=900, scrolling=False)
 
-# Render
-render_arcade_app(game_show_engine)
+# Render once
+run_app_securely(game_show_engine)
