@@ -657,7 +657,7 @@ game_show_engine = """
             document.getElementById("megaSpinBtn").disabled = true;
 
             let momentumForce = Math.random() * 0.2 + 0.35; 
-            const decayFactor = 0.993; 
+            const decayFactor = 0.985; 
             const cutOffThreshold = 0.001;
 
             function processFrame() {
