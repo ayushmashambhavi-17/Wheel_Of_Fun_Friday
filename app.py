@@ -31,10 +31,9 @@ TONGUE_TWISTERS = [
 ]
 
 MEMBERS = [
-    "Ajaz", "Amit", "Ankur", "Anushree", "Arpit", "Atharva", "Ayush", "Ayushma",
-    "Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
-    "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni", "Saket", "Sampada", "Shailavi",
-    "Shubham", "Shubhangi", "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
+    "Ajaz", "Amit", "Ankur","Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
+    "Nishank", "Prasad", "Pratik", "Pritesh", "Sampada", "Shailavi", "Shubham", "Shubhangi", 
+    "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
 ]
 
 # --- DATA SERIALIZATION LAYER ---
