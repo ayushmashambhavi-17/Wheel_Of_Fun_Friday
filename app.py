@@ -31,8 +31,8 @@ TONGUE_TWISTERS = [
 ]
 
 MEMBERS = [
-    "Ajaz", "Amit", "Ankur","Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
-    "Nishank", "Prasad", "Pratik", "Pritesh", "Sampada", "Shailavi", "Shubham", "Shubhangi", 
+    "Ajaz", "Amit", "Ankur", "Anushree", "Atharva", "Ayush", "Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
+    "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni", "Saket", "Sampada", "Shailavi", "Shubham", "Shubhangi", 
     "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
 ]
 
