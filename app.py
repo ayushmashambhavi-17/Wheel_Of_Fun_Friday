@@ -309,7 +309,7 @@ game_show_engine = """
         <canvas class="bg-particles" id="ambientEngine"></canvas>
         
         <div class="stage-header">
-            <h1>UK LM DAIS</h1>
+            <h1>UK LM DAIS TEAM</h1>
             <p>Lucky Name Picker Wheel</p>
         </div>
 
