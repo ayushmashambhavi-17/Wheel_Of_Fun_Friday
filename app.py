@@ -5,31 +5,13 @@ import streamlit.components.v1 as components
 
 # --- IMMERSIVE VIEWPORT CONFIGURATION SETUP ---
 st.set_page_config(
-    page_title="Arena | Tongue Twister Friday",
-    page_icon="🏆",
+    page_title="Arena | Name Picker Wheel",
+    page_icon="🎯",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# --- CURATED TONGUE TWISTERS ASSET MATRIX ---
-TONGUE_TWISTERS = [
-    "Peter Piper picked a peck of pickled peppers. A peck of pickled peppers Peter Piper picked.",
-    "She sells sea shells by the sea shore. The shells she sells are surely seashells.",
-    "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
-    "Betty Botter bought some butter but she said the butter's bitter.",
-    "Unique New York, New York's unique, you know New York is unique.",
-    "I scream, you scream, we all scream for ice cream!",
-    "Red lorry, yellow lorry, red lorry, yellow lorry.",
-    "Six sleek swans swam swiftly southwards.",
-    "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn't fuzzy, was he?",
-    "Pad kid poured curd pulled cod.",
-    "Can you can a can as a canner can can a can?",
-    "Which witch wished which wicked wish?",
-    "Fred fed Ted bread, and Ted fed Fred bread.",
-    "Lesser leather never weathered wetter weather better.",
-    "A loyal warrior headed to a royal warrior battle."
-]
-
+# --- CURATED TEAM ROSTER ASSET MATRIX ---
 MEMBERS = [
     "Ajaz", "Amit", "Ankur", "Anushree", "Atharva", "Ayush", "Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
     "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni", "Saket", "Sampada", "Shailavi", "Shubham", "Shubhangi", 
@@ -38,7 +20,6 @@ MEMBERS = [
 
 # --- DATA SERIALIZATION LAYER ---
 serialized_members = json.dumps(MEMBERS)
-serialized_twisters = json.dumps(TONGUE_TWISTERS)
 
 # --- LUXURY MIDNIGHT CARNIVAL ENGINE RUNTIME ---
 game_show_engine = """
@@ -47,9 +28,9 @@ game_show_engine = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tongue Twister Friday - Luxury Stage</title>
+    <title>Name Picker Wheel Arena</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=500;700;800&family=Space+Grotesk:wght=700;900&family=JetBrains+Mono:wght=700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Space+Grotesk:wght@700;900&display=swap');
 
         /* STRUCTURAL VIEWPORT RESET MECHANICS */
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
@@ -239,7 +220,7 @@ game_show_engine = """
             position: relative;
             z-index: 105;
             width: 100%;
-            max-width: 720px;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -248,10 +229,10 @@ game_show_engine = """
 
         .flow-card {
             width: 100%;
-            background: rgba(11, 19, 62, 0.75);
-            border: 2px solid rgba(255, 213, 79, 0.2);
+            background: rgba(11, 19, 62, 0.85);
+            border: 2px solid rgba(255, 213, 79, 0.3);
             border-radius: 32px;
-            padding: clamp(30px, 5vh, 50px);
+            padding: clamp(35px, 6vh, 55px);
             text-align: center;
             box-shadow: 0 35px 75px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255,255,255,0.08);
             display: none;
@@ -283,50 +264,20 @@ game_show_engine = """
         .spotlight-sub {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: clamp(0.85rem, 1.8vh, 1.1rem);
+            font-size: clamp(0.9rem, 2vh, 1.2rem);
             color: #FFC107; letter-spacing: 4px;
             text-transform: uppercase; margin-bottom: 8px;
         }
         .spotlight-name {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
-            font-size: clamp(2.5rem, 6.5vh, 4rem);
+            font-size: clamp(2.8rem, 7vh, 4.5rem);
             color: #FFF; letter-spacing: -1px;
-            text-shadow: 0 0 25px rgba(255, 213, 79, 0.3);
-            margin-bottom: 30px; text-transform: uppercase;
-        }
-
-        /* TEXT DISPLAY CONFIG MATRIX */
-        .twister-display-box {
-            background: rgba(2, 8, 39, 0.7);
-            border: 2px solid rgba(255, 213, 79, 0.25);
-            border-radius: 24px;
-            padding: clamp(25px, 4vh, 40px);
-            margin: 25px 0;
-            font-size: clamp(1.4rem, 3.2vh, 2.1rem);
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: #F8FAFC;
-            line-height: 1.5;
-            box-shadow: inset 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        .timer-viewport {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(3.2rem, 7.5vh, 4.8rem);
-            font-weight: 700;
-            color: #FFC107;
-            margin: 15px 0 25px 0;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 10px 35px;
-            border-radius: 18px;
-            display: inline-block;
-            letter-spacing: -1px;
-            border: 1px solid rgba(255, 213, 79, 0.1);
+            text-shadow: 0 0 25px rgba(255, 213, 79, 0.4);
+            margin-bottom: 35px; text-transform: uppercase;
         }
 
         .flow-actions {
-            margin-top: 25px;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -337,21 +288,19 @@ game_show_engine = """
         .btn-base {
             border: none; outline: none; color: #FFF;
             font-family: 'Space Grotesk', sans-serif; font-weight: 900;
-            font-size: clamp(0.95rem, 2vh, 1.15rem);
+            font-size: clamp(1rem, 2.2vh, 1.25rem);
             padding: clamp(14px, 2.2vh, 18px) clamp(35px, 4.5vw, 50px);
             border-radius: 50px; cursor: pointer;
             text-transform: uppercase; letter-spacing: 1.5px;
             transition: all 0.15s ease-out;
             display: inline-flex; align-items: center; gap: 8px;
         }
-        .btn-base:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .btn-base:hover { transform: scale(1.03); filter: brightness(1.1); }
         .btn-base:active { transform: scale(0.98); }
 
         .btn-green  { background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16,185,129,0.3); }
         .btn-red    { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 8px 20px rgba(239,68,68,0.3); }
-        .btn-blue   { background: linear-gradient(180deg, #FF5FA2 0%, #FF4081 50%, #D81B60 100%); box-shadow: 0 8px 20px rgba(255,64,129,0.3); width: 85%; justify-content: center; font-size: 1.25rem; border-radius: 20px; }
-        .btn-orange { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); box-shadow: 0 8px 20px rgba(245,158,11,0.3); }
-        .btn-purple { background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 8px 20px rgba(108,43,217,0.3); }
+        .btn-purple { background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 8px 20px rgba(108,43,217,0.3); width: 85%; justify-content: center; }
     </style>
 </head>
 <body>
@@ -360,14 +309,14 @@ game_show_engine = """
         <canvas class="bg-particles" id="ambientEngine"></canvas>
         
         <div class="stage-header">
-            <h1>Tongue Twister Friday</h1>
-            <p>Standup Arena Edition</p>
+            <h1>Friday Team Arena</h1>
+            <p>Lucky Name Picker Wheel</p>
         </div>
 
         <div class="wheel-theater" id="wheelTheater">
             <div class="premium-pointer" id="pointerPin"></div>
             <div class="gold-rim"></div>
-            <div class="center-hub">⭐</div>
+            <div class="center-hub">🎯</div>
             <canvas id="wheelCanvas" width="600" height="600"></canvas>
         </div>
 
@@ -381,35 +330,25 @@ game_show_engine = """
         
         <div class="card-stage" id="cardMatrix">
             
-            <div class="flow-card" id="flowStep1">
-                <div class="avatar-circle-halo"><div class="avatar-inner">🏆</div></div>
-                <p class="spotlight-sub">🏆 Today's Spotlight</p>
+            <!-- STEP 1: PRESENT OR ABSENT -->
+            <div class="flow-card visible" id="flowStep1">
+                <div class="avatar-circle-halo"><div class="avatar-inner">⭐</div></div>
+                <p class="spotlight-sub">Selected Winner</p>
                 <h2 class="spotlight-name" id="championTarget">PLAYER NAME</h2>
                 
                 <div class="flow-actions">
-                    <button class="btn-base btn-green" id="isPresentBtn">✅ Present</button>
+                    <button class="btn-base btn-green" id="isPresentBtn">✅ Accept / Present</button>
                     <button class="btn-base btn-red" id="isAbsentBtn">❌ Not Available</button>
                 </div>
             </div>
 
+            <!-- STEP 2: IT'S YOUR TURN POPUP -->
             <div class="flow-card" id="flowStep2">
-                <p class="spotlight-sub" id="revealSubheading">PREPARE YOURSELF...</p>
-                <h2 id="revealPlayerTitle" style="font-size: 2.2rem; margin-bottom: 25px; font-family:'Space Grotesk'; text-transform:uppercase;"></h2>
-                <button class="btn-base btn-blue" id="revealChallengeBtn">⚡ Reveal Challenge</button>
-            </div>
-
-            <div class="flow-card" id="flowStep3">
-                <p class="spotlight-sub">🔴 LIVE CHALLENGE STAGE</p>
-                <div class="twister-display-box" id="targetTwisterBox">Populating assets...</div>
+                <div class="avatar-circle-halo" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);"><div class="avatar-inner">🔥</div></div>
+                <p class="spotlight-sub" style="color: #10B981;">The Stage Is Yours!</p>
+                <h2 class="spotlight-name" id="turnPlayerTitle">IT'S YOUR TURN!</h2>
                 
-                <div class="timer-viewport" id="stopwatchDisplay">00:00.00</div>
-                
-                <div class="flow-actions" id="timerControlsGroup">
-                    <button class="btn-base btn-orange" id="startTimerBtn">▶ Start Timer</button>
-                    <button class="btn-base btn-red" id="stopTimerBtn" disabled style="opacity:0.5;">⏹ Stop Timer</button>
-                </div>
-
-                <div class="flow-actions" id="exitGroup" style="display:none; margin-top:20px;">
+                <div class="flow-actions" style="margin-top: 10px;">
                     <button class="btn-base btn-purple" id="backToWheelBtn">🔙 Back To Wheel</button>
                 </div>
             </div>
@@ -418,8 +357,7 @@ game_show_engine = """
     </div>
 
     <script>
-        const players = __PLAYERS_PLACEHOLDER__;
-        const twisterPool = __TWISTERS_PLACEHOLDER__;
+        let players = __PLAYERS_PLACEHOLDER__;
 
         // JEWEL-TONE WHEEL SEGMENT REPEATING SPECIFICATION PATTERN
         const segmentGradients = [
@@ -433,15 +371,7 @@ game_show_engine = """
         const ctx = canvas.getContext("2d");
         let currentAngleOffset = 0;
         let isSpinning = false;
-        
         let activeSelectedPlayer = "";
-        let activeSelectedTwister = "";
-        
-        let startTime = 0;
-        let elapsedInterval = null;
-        let dynamicTimeTrack = 0;
-
-        const participationHistory = [];
 
         function drawWheel() {
             const cx = canvas.width / 2;
@@ -493,7 +423,7 @@ game_show_engine = """
             }
         }
 
-        // --- GOLDEN SPARKS FLOATING PARTICLE ENGINE ---
+        // --- AMBIENT PARTICLES ---
         const bgCanvas = document.getElementById("ambientEngine");
         const bgCtx = bgCanvas.getContext("2d");
         let ambientStars = [];
@@ -505,20 +435,19 @@ game_show_engine = """
         window.addEventListener("resize", resizeAmbientCanvas);
         resizeAmbientCanvas();
 
-        // Jewel-toned / Metallic Gold Spark Palette Config
         const goldRGBs = [
-            {r: 255, g: 213, b: 74},  // #FFD54A
-            {r: 255, g: 193, b: 7},   // #FFC107
-            {r: 255, g: 235, b: 59}   // #FFEB3B
+            {r: 255, g: 213, b: 74},
+            {r: 255, g: 193, b: 7},
+            {r: 255, g: 235, b: 59}
         ];
 
-        for(let i=0; i<50; i++) {
+        for(let i=0; i<40; i++) {
             const baseColor = goldRGBs[Math.floor(Math.random() * goldRGBs.length)];
             ambientStars.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
                 size: Math.random() * 2.5 + 1,
-                alpha: Math.random() * 0.4 + 0.4, // Map initial bounds inside 0.4 - 0.8
+                alpha: Math.random() * 0.4 + 0.4,
                 speed: Math.random() * 0.008 + 0.003,
                 colorProfile: baseColor
             });
@@ -528,10 +457,7 @@ game_show_engine = """
             bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
             ambientStars.forEach(s => {
                 s.alpha += s.speed;
-                // Clamp oscillator constraints precisely between 0.4 and 0.8 opacity bounds
-                if(s.alpha > 0.8 || s.alpha < 0.4) {
-                    s.speed = -s.speed;
-                }
+                if(s.alpha > 0.8 || s.alpha < 0.4) { s.speed = -s.speed; }
                 bgCtx.beginPath();
                 bgCtx.arc(s.x, s.y, s.size, 0, Math.PI*2);
                 bgCtx.fillStyle = `rgba(${s.colorProfile.r}, ${s.colorProfile.g}, ${s.colorProfile.b}, ${Math.max(0.4, Math.min(0.8, s.alpha))})`;
@@ -541,7 +467,6 @@ game_show_engine = """
         }
         loopAmbientBackground();
 
-        // --- MATH RECTIFIED POINTER INDICATOR SYSTEM ---
         const pointerPin = document.getElementById("pointerPin");
         let lastSegmentLogged = -1;
 
@@ -563,7 +488,7 @@ game_show_engine = """
         }
 
         document.getElementById("megaSpinBtn").addEventListener("click", () => {
-            if (isSpinning) return;
+            if (isSpinning || players.length === 0) return;
             isSpinning = true;
             document.getElementById("megaSpinBtn").disabled = true;
 
@@ -601,84 +526,30 @@ game_show_engine = """
 
             document.getElementById("championTarget").innerText = activeSelectedPlayer;
             document.getElementById("victoryScreen").classList.add("active");
-            switchWorkflowUIVisibility("flowStep1");
+            
+            document.getElementById("flowStep1").classList.add("visible");
+            document.getElementById("flowStep2").classList.remove("visible");
             
             initializeConfettiSparks();
             loopCelebrationScreen();
         }
 
-        function switchWorkflowUIVisibility(visibleStepId) {
-            document.getElementById("flowStep1").classList.remove("visible");
-            document.getElementById("flowStep2").classList.remove("visible");
-            document.getElementById("flowStep3").classList.remove("visible");
-            
-            document.getElementById(visibleStepId).classList.add("visible");
-        }
-
-        document.getElementById("isAbsentBtn").addEventListener("click", () => {
-            dismissOverlayToWheel();
-        });
-
+        // ACCEPT / PRESENT CLICKED -> REMOVE NAME FROM WHEEL PERMANENTLY & SHOW TURN
         document.getElementById("isPresentBtn").addEventListener("click", () => {
-            document.getElementById("revealPlayerTitle").innerText = activeSelectedPlayer;
-            switchWorkflowUIVisibility("flowStep2");
+            // Remove the accepted player from the roster so they never appear again
+            players = players.filter(p => p !== activeSelectedPlayer);
+            drawWheel();
+
+            document.getElementById("flowStep1").classList.remove("visible");
+            document.getElementById("flowStep2").classList.add("visible");
+            document.getElementById("turnPlayerTitle").innerText = activeSelectedPlayer + ", IT'S YOUR TURN!";
         });
 
-        document.getElementById("revealChallengeBtn").addEventListener("click", () => {
-            const randomIdx = Math.floor(Math.random() * twisterPool.length);
-            activeSelectedTwister = twisterPool[randomIdx];
-
-            document.getElementById("targetTwisterBox").innerText = activeSelectedTwister;
-            resetStopwatchUI();
-            switchWorkflowUIVisibility("flowStep3");
-        });
-
-        // --- HIGH-PRECISION RUNTIME TIMING SYSTEM ---
-        function resetStopwatchUI() {
-            clearInterval(elapsedInterval);
-            dynamicTimeTrack = 0;
-            document.getElementById("stopwatchDisplay").innerText = "00:00.00";
-            document.getElementById("stopwatchDisplay").style.color = "#FFC107";
-            
-            document.getElementById("startTimerBtn").disabled = false;
-            document.getElementById("startTimerBtn").style.opacity = "1";
-            document.getElementById("stopTimerBtn").disabled = true;
-            document.getElementById("stopTimerBtn").style.opacity = "0.5";
-            
-            document.getElementById("timerControlsGroup").style.display = "flex";
-            document.getElementById("exitGroup").style.display = "none";
-        }
-
-        document.getElementById("startTimerBtn").addEventListener("click", () => {
-            document.getElementById("startTimerBtn").disabled = true;
-            document.getElementById("startTimerBtn").style.opacity = "0.5";
-            document.getElementById("stopTimerBtn").disabled = false;
-            document.getElementById("stopTimerBtn").style.opacity = "1";
-            
-            startTime = Date.now();
-            elapsedInterval = setInterval(() => {
-                dynamicTimeTrack = Date.now() - startTime;
-                document.getElementById("stopwatchDisplay").innerText = formatMillisecondsToTimeStr(dynamicTimeTrack);
-            }, 10);
-        });
-
-        document.getElementById("stopTimerBtn").addEventListener("click", () => {
-            clearInterval(elapsedInterval);
-            document.getElementById("stopTimerBtn").disabled = true;
-            document.getElementById("stopTimerBtn").style.opacity = "0.5";
-            
-            const structuredFinalTimeString = formatMillisecondsToTimeStr(dynamicTimeTrack);
-            document.getElementById("stopwatchDisplay").innerText = structuredFinalTimeString;
-            document.getElementById("stopwatchDisplay").style.color = "#10B981";
-            
-            participationHistory.push({
-                name: activeSelectedPlayer,
-                tongue_twister: activeSelectedTwister,
-                completion_time: structuredFinalTimeString
-            });
-
-            document.getElementById("timerControlsGroup").style.display = "none";
-            document.getElementById("exitGroup").style.display = "flex";
+        // NOT AVAILABLE CLICKED -> REMOVE NAME FROM WHEEL PERMANENTLY & DISMISS
+        document.getElementById("isAbsentBtn").addEventListener("click", () => {
+            players = players.filter(p => p !== activeSelectedPlayer);
+            drawWheel();
+            dismissOverlayToWheel();
         });
 
         document.getElementById("backToWheelBtn").addEventListener("click", () => {
@@ -691,19 +562,6 @@ game_show_engine = """
             document.getElementById("megaSpinBtn").disabled = false;
         }
 
-        function formatMillisecondsToTimeStr(durationMs) {
-            let milliseconds = parseInt((durationMs % 1000) / 10),
-                seconds = parseInt((durationMs / 1000) % 60),
-                minutes = parseInt((durationMs / (1000 * 60)) % 60);
-
-            minutes = (minutes < 10) ? "0" + minutes : minutes;
-            seconds = (seconds < 10) ? "0" + seconds : seconds;
-            milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
-
-            return minutes + ":" + seconds + "." + milliseconds;
-        }
-
-        // --- LUXURY PARTY ENGINE GOLD AND JEWEL CONFETTI SPILL ---
         let confettiSparks = [];
         const celCanvas = document.getElementById("celebrationCanvas");
         const celCtx = celCanvas.getContext("2d");
@@ -714,7 +572,7 @@ game_show_engine = """
             confettiSparks = [];
 
             const colorPalette = ["#FFD700", "#FF4081", "#6C2BD9", "#2F62CC", "#22B8CF"];
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 100; i++) {
                 confettiSparks.push({
                     x: Math.random() * celCanvas.width,
                     y: Math.random() * -60 - 20,
@@ -754,7 +612,6 @@ game_show_engine = """
             }
         }
 
-        // INITIALIZE APP VIEWPORT DEFAULT FRAME STATE
         drawWheel();
     </script>
 </body>
@@ -763,7 +620,6 @@ game_show_engine = """
 
 # --- CONTEXT STRING DATA INTERPOLATION PIPELINE ---
 game_show_engine = game_show_engine.replace("__PLAYERS_PLACEHOLDER__", serialized_members)
-game_show_engine = game_show_engine.replace("__TWISTERS_PLACEHOLDER__", serialized_twisters)
 
 # --- CSS FULL-SCREEN IFRAME PORT BUFFER SAFEGUARD OVERRIDES ---
 st.markdown("""
@@ -783,5 +639,4 @@ def run_app_securely(html_string):
     data_uri = f"data:text/html;base64,{b64_html}"
     components.iframe(src=data_uri, height=950, scrolling=False)
 
-# Render once
 run_app_securely(game_show_engine)
