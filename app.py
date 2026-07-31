@@ -13,8 +13,8 @@ st.set_page_config(
 
 # --- CURATED TEAM ROSTER ASSET MATRIX ---
 MEMBERS = [
-    "Ajaz", "Amit", "Ankur", "Anushree", "Atharva", "Ayush", "Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
-    "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni", "Saket", "Sampada", "Shailavi", "Shubham", "Shubhangi", 
+    "Ajaz", "Amit", "Ankur","Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
+    "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni","Sampada", "Shailavi", "Shubham", "Shubhangi", 
     "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
 ]
 
@@ -309,7 +309,7 @@ game_show_engine = """
         <canvas class="bg-particles" id="ambientEngine"></canvas>
         
         <div class="stage-header">
-            <h1>Friday Team Arena</h1>
+            <h1>UK LM DAIS</h1>
             <p>Lucky Name Picker Wheel</p>
         </div>
 
