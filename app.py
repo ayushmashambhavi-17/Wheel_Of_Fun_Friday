@@ -235,12 +235,11 @@ game_show_engine = """
             position: relative;
             z-index: 105;
             width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
+            max-width: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .flow-card {
