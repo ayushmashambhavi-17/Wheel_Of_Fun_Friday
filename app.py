@@ -1,23 +1,23 @@
 import base64
 import json
+import os
 import streamlit as st
 import streamlit.components.v1 as components
 
-
-def image_to_base64(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode()
-
-
-LOGO_BASE64 = image_to_base64("ufo_logo.png")
-
-# --- IMMERSIVE VIEWPORT CONFIGURATION SETUP ---
+# --- VIEWPORT & CONFIGURATION ---
 st.set_page_config(
     page_title="Arena | Name Picker Wheel",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+
+# --- SAFE LOGO ASSET LOADER ---
+LOGO_BASE64 = ""
+logo_path = "ufo_logo.png"
+if os.path.exists(logo_path):
+    with open(logo_path, "rb") as image_file:
+        LOGO_BASE64 = base64.b64encode(image_file.read()).decode()
 
 # --- CURATED TEAM ROSTER ASSET MATRIX ---
 MEMBERS = [
@@ -48,7 +48,6 @@ MEMBERS = [
     "Yasmin",
 ]
 
-# --- DATA SERIALIZATION LAYER ---
 serialized_members = json.dumps(MEMBERS)
 
 # --- LUXURY MIDNIGHT CARNIVAL ENGINE RUNTIME ---
@@ -62,10 +61,9 @@ game_show_engine = """
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Space+Grotesk:wght@700;900&display=swap');
 
-        /* STRUCTURAL VIEWPORT RESET MECHANICS */
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
         html, body {
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             overflow: hidden;
             background: #020827;
@@ -73,7 +71,6 @@ game_show_engine = """
             color: #F8FAFC;
         }
 
-        /* PREMIUM radial CONTEXT THEATER STAGE */
         .game-stage {
             position: relative;
             width: 100vw;
@@ -118,11 +115,10 @@ game_show_engine = """
             margin-top: 2px;
         }
 
-        /* HERO WHEEL THEATER METALLIC FRAME */
         .wheel-theater {
             position: relative;
-            width: clamp(500px, 78vh, 700px);
-            height: clamp(500px, 78vh, 700px);
+            width: clamp(350px, 72vh, 600px);
+            height: clamp(350px, 72vh, 600px);
             z-index: 5;
             display: flex;
             align-items: center;
@@ -136,10 +132,7 @@ game_show_engine = """
             height: 101.5%;
             border-radius: 50%;
             background: radial-gradient(circle, transparent 65%, #E6A800 66%, #FFC107 72%, #FFE76A 76%, #FFC107 82%, transparent 86%);
-            box-shadow: 
-                0 0 20px rgba(255,215,0,.6),
-                0 0 50px rgba(255,215,0,.3),
-                0 20px 45px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 20px rgba(255,215,0,.6), 0 0 50px rgba(255,215,0,.3), 0 20px 45px rgba(0, 0, 0, 0.6);
             z-index: 3;
             pointer-events: none;
         }
@@ -151,7 +144,6 @@ game_show_engine = """
             z-index: 2;
         }
 
-        /* GOLDEN TRIANGLE POINTER INDICATOR */
         .premium-pointer {
             position: absolute;
             top: -12px;
@@ -167,17 +159,13 @@ game_show_engine = """
             transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* GOLD COIN CENTER HUB */
         .center-hub {
             position: absolute;
-            width: 170px;
-            height: 170px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             background: #ffffff;
-            box-shadow:
-                0 0 20px rgba(255,255,255,0.5),
-                0 0 40px rgba(255,215,0,0.5),
-                0 5px 25px rgba(0,0,0,0.6);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,215,0,0.5), 0 5px 25px rgba(0,0,0,0.6);
             z-index: 6;
             display: flex;
             align-items: center;
@@ -191,19 +179,13 @@ game_show_engine = """
             object-fit: contain;
         }
 
-        @keyframes hubGlowPulse {
-            0%, 100% { box-shadow: inset 0 0 12px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.6), 0 0 15px rgba(255, 215, 0, 0.4); }
-            50% { box-shadow: inset 0 0 12px rgba(255,255,255,0.8), 0 6px 20px rgba(0,0,0,0.6), 0 0 35px rgba(255, 215, 0, 0.8); transform: scale(1.02); }
-        }
-
         .spin-trigger-wrapper {
             z-index: 10;
-            height: 12vh;
+            height: 10vh;
             display: flex;
             align-items: center;
         }
 
-        /* HOT PINK GAMING ACTION BUTTON */
         .spin-cta-btn {
             outline: none;
             border: none;
@@ -213,12 +195,10 @@ game_show_engine = """
             font-weight: 900;
             font-size: clamp(1.1rem, 2.5vh, 1.5rem);
             letter-spacing: 1.5px;
-            padding: clamp(12px, 2vh, 18px) clamp(40px, 6vw, 65px);
+            padding: clamp(12px, 2vh, 16px) clamp(40px, 6vw, 60px);
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 
-                0 8px 0 #A01347,
-                0 15px 30px rgba(255, 64, 129, 0.5);
+            box-shadow: 0 8px 0 #A01347, 0 15px 30px rgba(255, 64, 129, 0.5);
             text-transform: uppercase;
             transition: transform 0.1s;
         }
@@ -228,7 +208,6 @@ game_show_engine = """
             box-shadow: 0 2px 0 #A01347, 0 8px 15px rgba(255, 64, 129, 0.5);
         }
 
-        /* CARNIVAL GLASSMORPHIC INTERACTION CARDS */
         .celebration-screen {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -255,7 +234,7 @@ game_show_engine = """
             position: relative;
             z-index: 105;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -267,7 +246,7 @@ game_show_engine = """
             background: rgba(11, 19, 62, 0.85);
             border: 2px solid rgba(255, 213, 79, 0.3);
             border-radius: 32px;
-            padding: clamp(35px, 6vh, 55px);
+            padding: clamp(30px, 5vh, 45px);
             text-align: center;
             box-shadow: 0 35px 75px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255,255,255,0.08);
             display: none;
@@ -281,10 +260,10 @@ game_show_engine = """
         }
 
         .avatar-circle-halo {
-            width: clamp(80px, 11vh, 100px);
-            height: clamp(80px, 11vh, 100px);
+            width: clamp(70px, 10vh, 90px);
+            height: clamp(70px, 10vh, 90px);
             border-radius: 50%;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 15px auto;
             background: linear-gradient(135deg, #FFD54F 0%, #D63384 100%);
             padding: 3px;
             box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
@@ -293,38 +272,38 @@ game_show_engine = """
             width: 100%; height: 100%;
             border-radius: 50%; background: #050D45;
             display: flex; align-items: center; justify-content: center;
-            font-size: clamp(2rem, 4.5vh, 2.5rem);
+            font-size: clamp(1.8rem, 4vh, 2.2rem);
         }
 
         .spotlight-sub {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: clamp(0.9rem, 2vh, 1.2rem);
+            font-size: clamp(0.8rem, 1.8vh, 1.1rem);
             color: #FFC107; letter-spacing: 4px;
-            text-transform: uppercase; margin-bottom: 8px;
+            text-transform: uppercase; margin-bottom: 6px;
         }
         .spotlight-name {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
-            font-size: clamp(2.8rem, 7vh, 4.5rem);
+            font-size: clamp(2.2rem, 6vh, 3.8rem);
             color: #FFF; letter-spacing: -1px;
             text-shadow: 0 0 25px rgba(255, 213, 79, 0.4);
-            margin-bottom: 35px; text-transform: uppercase;
+            margin-bottom: 25px; text-transform: uppercase;
         }
 
         .flow-actions {
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .btn-base {
             border: none; outline: none; color: #FFF;
             font-family: 'Space Grotesk', sans-serif; font-weight: 900;
-            font-size: clamp(1rem, 2.2vh, 1.25rem);
-            padding: clamp(14px, 2.2vh, 18px) clamp(35px, 4.5vw, 50px);
+            font-size: clamp(0.9rem, 2vh, 1.15rem);
+            padding: clamp(12px, 2vh, 16px) clamp(25px, 4vw, 40px);
             border-radius: 50px; cursor: pointer;
             text-transform: uppercase; letter-spacing: 1.5px;
             transition: all 0.15s ease-out;
@@ -352,9 +331,9 @@ game_show_engine = """
             <div class="premium-pointer" id="pointerPin"></div>
             <div class="gold-rim"></div>
             <div class="center-hub">
-                <img src="data:image/png;base64,__LOGO_BASE64__" class="center-logo" alt="UFO Logo"/>
+                <img src="data:image/png;base64,__LOGO_BASE64__" class="center-logo" alt="Logo"/>
             </div>
-            <canvas id="wheelCanvas" width="700" height="700"></canvas>
+            <canvas id="wheelCanvas" width="600" height="600"></canvas>
         </div>
 
         <div class="spin-trigger-wrapper">
@@ -364,44 +343,35 @@ game_show_engine = """
 
     <div class="celebration-screen" id="victoryScreen">
         <canvas id="celebrationCanvas"></canvas>
-        
         <div class="card-stage" id="cardMatrix">
-            
-            <!-- STEP 1: PRESENT OR ABSENT -->
             <div class="flow-card visible" id="flowStep1">
                 <div class="avatar-circle-halo"><div class="avatar-inner">⭐</div></div>
                 <p class="spotlight-sub">Selected Winner</p>
                 <h2 class="spotlight-name" id="championTarget">PLAYER NAME</h2>
-                
                 <div class="flow-actions">
                     <button class="btn-base btn-green" id="isPresentBtn">✅ Accept / Present</button>
                     <button class="btn-base btn-red" id="isAbsentBtn">❌ Not Available</button>
                 </div>
             </div>
 
-            <!-- STEP 2: IT'S YOUR TURN POPUP -->
             <div class="flow-card" id="flowStep2">
                 <div class="avatar-circle-halo" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);"><div class="avatar-inner">🔥</div></div>
                 <p class="spotlight-sub" style="color: #10B981;">The Stage Is Yours!</p>
                 <h2 class="spotlight-name" id="turnPlayerTitle">IT'S YOUR TURN!</h2>
-                
                 <div class="flow-actions" style="margin-top: 10px;">
                     <button class="btn-base btn-purple" id="backToWheelBtn">🔙 Back To Wheel</button>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
         let players = __PLAYERS_PLACEHOLDER__;
-
-        // JEWEL-TONE WHEEL SEGMENT REPEATING SPECIFICATION PATTERN
         const segmentGradients = [
-            ["#6C2BD9", "#6120C2"], // Purple
-            ["#D63384", "#E83E8C"], // Magenta Pink
-            ["#2F62CC", "#3867D6"], // Royal Blue
-            ["#18A8D8", "#22B8CF"]  // Cyan Blue
+            ["#6C2BD9", "#6120C2"],
+            ["#D63384", "#E83E8C"],
+            ["#2F62CC", "#3867D6"],
+            ["#18A8D8", "#22B8CF"]
         ];
 
         const canvas = document.getElementById("wheelCanvas");
@@ -413,9 +383,10 @@ game_show_engine = """
         function drawWheel() {
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
-            const radius = canvas.width / 2 - 12;
-            const centerGap = 100;
+            const radius = canvas.width / 2 - 10;
+            const centerGap = 85;
             const numSlices = players.length;
+            if (numSlices === 0) return;
             const sliceAngle = (2 * Math.PI) / numSlices;
             
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -437,7 +408,6 @@ game_show_engine = """
                 
                 ctx.fillStyle = fillGrad;
                 ctx.fill();
-
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
                 ctx.stroke();
@@ -447,7 +417,7 @@ game_show_engine = """
                 ctx.rotate(startAngle + sliceAngle / 2);
                 ctx.fillStyle = "#FFFFFF";
                 
-                const computedFontSize = Math.max(9, Math.min(14, parseFloat(380 / numSlices)));
+                const computedFontSize = Math.max(9, Math.min(13, parseFloat(340 / numSlices)));
                 ctx.font = `800 ${computedFontSize}px 'Plus Jakarta Sans', sans-serif`;
                 ctx.textAlign = "right";
                 ctx.textBaseline = "middle";
@@ -458,12 +428,11 @@ game_show_engine = """
                     nameStr = nameStr.substring(0, maxCharacterLength - 2) + "..";
                 }
                 
-                ctx.fillText(nameStr, radius - 25, 0);
+                ctx.fillText(nameStr, radius - 20, 0);
                 ctx.restore();
             }
         }
 
-        // --- AMBIENT PARTICLES ---
         const bgCanvas = document.getElementById("ambientEngine");
         const bgCtx = bgCanvas.getContext("2d");
         let ambientStars = [];
@@ -475,21 +444,15 @@ game_show_engine = """
         window.addEventListener("resize", resizeAmbientCanvas);
         resizeAmbientCanvas();
 
-        const goldRGBs = [
-            {r: 255, g: 213, b: 74},
-            {r: 255, g: 193, b: 7},
-            {r: 255, g: 235, b: 59}
-        ];
-
-        for(let i=0; i<40; i++) {
-            const baseColor = goldRGBs[Math.floor(Math.random() * goldRGBs.length)];
+        const goldRGBs = [{r: 255, g: 213, b: 74}, {r: 255, g: 193, b: 7}, {r: 255, g: 235, b: 59}];
+        for(let i=0; i<35; i++) {
             ambientStars.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
                 size: Math.random() * 2.5 + 1,
                 alpha: Math.random() * 0.4 + 0.4,
                 speed: Math.random() * 0.008 + 0.003,
-                colorProfile: baseColor
+                colorProfile: goldRGBs[Math.floor(Math.random() * goldRGBs.length)]
             });
         }
 
@@ -514,7 +477,6 @@ game_show_engine = """
             if (velocity > 0.015) {
                 const numSlices = players.length;
                 const sliceAngle = (2 * Math.PI) / numSlices;
-                
                 const normalizedAngle = (1.5 * Math.PI - currentAngleOffset) % (2 * Math.PI);
                 const standardAngle = normalizedAngle < 0 ? normalizedAngle + 2 * Math.PI : normalizedAngle;
                 const activeIndex = Math.floor(standardAngle / sliceAngle) % numSlices;
@@ -557,7 +519,6 @@ game_show_engine = """
         function evaluateSynchronizedWinner() {
             const numSlices = players.length;
             const sliceAngle = (2 * Math.PI) / numSlices;
-            
             let exactTargetAngle = (1.5 * Math.PI - currentAngleOffset) % (2 * Math.PI);
             if (exactTargetAngle < 0) exactTargetAngle += 2 * Math.PI;
 
@@ -566,7 +527,6 @@ game_show_engine = """
 
             document.getElementById("championTarget").innerText = activeSelectedPlayer;
             document.getElementById("victoryScreen").classList.add("active");
-            
             document.getElementById("flowStep1").classList.add("visible");
             document.getElementById("flowStep2").classList.remove("visible");
             
@@ -574,17 +534,14 @@ game_show_engine = """
             loopCelebrationScreen();
         }
 
-        // ACCEPT / PRESENT CLICKED -> REMOVE NAME FROM WHEEL PERMANENTLY & SHOW TURN
         document.getElementById("isPresentBtn").addEventListener("click", () => {
             players = players.filter(p => p !== activeSelectedPlayer);
             drawWheel();
-
             document.getElementById("flowStep1").classList.remove("visible");
             document.getElementById("flowStep2").classList.add("visible");
             document.getElementById("turnPlayerTitle").innerText = activeSelectedPlayer + ", IT'S YOUR TURN!";
         });
 
-        // NOT AVAILABLE CLICKED -> REMOVE NAME FROM WHEEL PERMANENTLY & DISMISS
         document.getElementById("isAbsentBtn").addEventListener("click", () => {
             players = players.filter(p => p !== activeSelectedPlayer);
             drawWheel();
@@ -609,9 +566,8 @@ game_show_engine = """
             celCanvas.width = window.innerWidth;
             celCanvas.height = window.innerHeight;
             confettiSparks = [];
-
             const colorPalette = ["#FFD700", "#FF4081", "#6C2BD9", "#2F62CC", "#22B8CF"];
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 80; i++) {
                 confettiSparks.push({
                     x: Math.random() * celCanvas.width,
                     y: Math.random() * -60 - 20,
@@ -657,13 +613,13 @@ game_show_engine = """
 </html>
 """
 
-# --- CONTEXT STRING DATA INTERPOLATION PIPELINE ---
+# --- INJECT DATA PLACEHOLDERS ---
 game_show_engine = game_show_engine.replace(
     "__PLAYERS_PLACEHOLDER__", serialized_members
 )
 game_show_engine = game_show_engine.replace("__LOGO_BASE64__", LOGO_BASE64)
 
-# --- CSS FULL-SCREEN IFRAME PORT BUFFER SAFEGUARD OVERRIDES ---
+# --- STREAMLIT CSS OVERRIDES & MOUNT ---
 st.markdown(
     """
     <style>
@@ -671,19 +627,11 @@ st.markdown(
             padding: 0 !important; margin: 0 !important; max-width: 100vw !important; height: 100vh !important; overflow: hidden !important;
         }
         [data-testid="stHeader"], [data-testid="stToolbar"] { visibility: hidden !important; display: none !important; }
-        iframe { border: none !important; width: 100vw !important; height: 100vh !important; overflow: hidden !important; display: block !important; }
         div[data-testid="stBlock"] { padding: 0 !important; }
     </style>
 """,
     unsafe_allow_html=True,
 )
 
-
-# --- BASE64 DATA PACKAGED PIPELINE MOUNT ---
-def run_app_securely(html_string):
-    b64_html = base64.b64encode(html_string.encode("utf-8")).decode("utf-8")
-    data_uri = f"data:text/html;base64,{b64_html}"
-    components.iframe(src=data_uri, height=950, scrolling=False)
-
-
-run_app_securely(game_show_engine)
+# Render cleanly using components.html instead of an iframe wrapper to bypass blank screen issues
+components.html(game_show_engine, height=850, scrolling=False)
