@@ -63,7 +63,7 @@ game_show_engine = """
 
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
         html, body {
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             overflow: hidden;
             background: #020827;
@@ -208,25 +208,28 @@ game_show_engine = """
 
         .celebration-screen {
             position: fixed;
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
+            inset: 0;
+            width: 100vw;
             height: 100vh;
             z-index: 100;
             background: rgba(2, 8, 39, 0.96);
             backdrop-filter: blur(30px);
-            opacity: 0; 
+            opacity: 0;
             pointer-events: none;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: opacity 0.4s ease-out;
+            margin: 0;
+            padding: 0;
         }
         .celebration-screen.active { opacity: 1; pointer-events: auto; }
 
         #celebrationCanvas {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 101;
         }
@@ -236,12 +239,12 @@ game_show_engine = """
             z-index: 105;
             width: 100%;
             max-width: 380px;
-            margin: 0 auto;
+            margin: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .flow-card {
@@ -636,4 +639,5 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-components.html(game_show_engine, height=850, scrolling=False)
+# Fullscreen iframe sizing set to 100vh equivalent (1000px)
+components.html(game_show_engine, height=1000, scrolling=False)
