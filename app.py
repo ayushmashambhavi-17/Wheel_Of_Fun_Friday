@@ -191,19 +191,19 @@ game_show_engine = """
             color: #FFF;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
-            font-size: clamp(1.1rem, 2.5vh, 1.5rem);
-            letter-spacing: 1.5px;
-            padding: clamp(10px, 1.8vh, 14px) clamp(35px, 5vw, 55px);
-            border-radius: 50px;
+            font-size: clamp(0.85rem, 1.8vh, 1.1rem);
+            letter-spacing: 1px;
+            padding: clamp(8px, 1.2vh, 10px) clamp(22px, 3vw, 35px);
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 8px 0 #A01347, 0 15px 30px rgba(255, 64, 129, 0.5);
+            box-shadow: 0 4px 0 #A01347, 0 8px 20px rgba(255, 64, 129, 0.4);
             text-transform: uppercase;
             transition: transform 0.1s;
         }
         .spin-cta-btn:hover { transform: scale(1.03); filter: brightness(1.05); }
         .spin-cta-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #A01347, 0 8px 15px rgba(255, 64, 129, 0.5);
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #A01347, 0 4px 10px rgba(255, 64, 129, 0.4);
         }
 
         .celebration-screen {
@@ -238,7 +238,6 @@ game_show_engine = """
             max-width: 380px;
             margin: 0 auto;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 0 15px;
