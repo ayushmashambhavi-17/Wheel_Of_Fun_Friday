@@ -206,6 +206,7 @@ game_show_engine = """
             box-shadow: 0 1px 0 #A01347, 0 4px 10px rgba(255, 64, 129, 0.4);
         }
 
+        /* --- PERFECT TRUE CENTER OVERLAY --- */
         .celebration-screen {
             position: fixed;
             top: 0; 
@@ -231,19 +232,11 @@ game_show_engine = """
             z-index: 101;
         }
 
-        .card-stage {
+        .flow-card {
             position: relative;
             z-index: 105;
-            width: 100%;
+            width: 90%;
             max-width: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 20px;
-        }
-
-        .flow-card {
-            width: 100%;
             background: rgba(11, 19, 62, 0.88);
             border: 2px solid rgba(255, 213, 79, 0.3);
             border-radius: 24px;
@@ -344,24 +337,23 @@ game_show_engine = """
 
     <div class="celebration-screen" id="victoryScreen">
         <canvas id="celebrationCanvas"></canvas>
-        <div class="card-stage" id="cardMatrix">
-            <div class="flow-card visible" id="flowStep1">
-                <div class="avatar-circle-halo"><div class="avatar-inner">⭐</div></div>
-                <p class="spotlight-sub">Selected Winner</p>
-                <h2 class="spotlight-name" id="championTarget">PLAYER NAME</h2>
-                <div class="flow-actions">
-                    <button class="btn-base btn-green" id="isPresentBtn">✅ Accept / Present</button>
-                    <button class="btn-base btn-red" id="isAbsentBtn">❌ Not Available</button>
-                </div>
+        
+        <div class="flow-card visible" id="flowStep1">
+            <div class="avatar-circle-halo"><div class="avatar-inner">⭐</div></div>
+            <p class="spotlight-sub">Selected Winner</p>
+            <h2 class="spotlight-name" id="championTarget">PLAYER NAME</h2>
+            <div class="flow-actions">
+                <button class="btn-base btn-green" id="isPresentBtn">✅ Accept / Present</button>
+                <button class="btn-base btn-red" id="isAbsentBtn">❌ Not Available</button>
             </div>
+        </div>
 
-            <div class="flow-card" id="flowStep2">
-                <div class="avatar-circle-halo" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);"><div class="avatar-inner">🔥</div></div>
-                <p class="spotlight-sub" style="color: #10B981;">The Stage Is Yours!</p>
-                <h2 class="spotlight-name" id="turnPlayerTitle">IT'S YOUR TURN!</h2>
-                <div class="flow-actions" style="margin-top: 6px;">
-                    <button class="btn-base btn-purple" id="backToWheelBtn">🔙 Back To Wheel</button>
-                </div>
+        <div class="flow-card" id="flowStep2">
+            <div class="avatar-circle-halo" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);"><div class="avatar-inner">🔥</div></div>
+            <p class="spotlight-sub" style="color: #10B981;">The Stage Is Yours!</p>
+            <h2 class="spotlight-name" id="turnPlayerTitle">IT'S YOUR TURN!</h2>
+            <div class="flow-actions" style="margin-top: 6px;">
+                <button class="btn-base btn-purple" id="backToWheelBtn">🔙 Back To Wheel</button>
             </div>
         </div>
     </div>
@@ -634,5 +626,4 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Expanded height to match the full window viewport and resolve iframe constraints
 components.html(game_show_engine, height=950, scrolling=False)
