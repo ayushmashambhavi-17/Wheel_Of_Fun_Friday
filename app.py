@@ -62,7 +62,6 @@ game_show_engine = f"""
 
         * {{ box-sizing: border-box; margin: 0; padding: 0; user-select: none; }}
         
-        /* Force full screen takeover, bypassing Streamlit padding */
         .stApp {{
             background: #020827 !important;
         }
@@ -208,35 +207,37 @@ game_show_engine = f"""
             box-shadow: 0 1px 0 #A01347, 0 4px 10px rgba(255, 64, 129, 0.4);
         }}
 
-        /* --- ABSOLUTE FULLSCREEN TRUE CENTER OVERLAY --- */
+        /* --- BULLETPROOF ISOLATED TRUE-CENTER OVERLAY --- */
         .celebration-screen {{
-            position: fixed;
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh;
-            z-index: 9999;
-            background: rgba(2, 8, 39, 0.96);
+            position: fixed !important;
+            top: 0 !important; 
+            left: 0 !important; 
+            width: 100vw !important; 
+            height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            z-index: 999999 !important;
+            background: rgba(2, 8, 39, 0.96) !important;
             backdrop-filter: blur(30px);
             opacity: 0; 
             pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             transition: opacity 0.4s ease-out;
         }
-        .celebration-screen.active {{ opacity: 1; pointer-events: auto; }}
+        .celebration-screen.active {{ opacity: 1 !important; pointer-events: auto !important; }}
 
         #celebrationCanvas {{
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute !important;
+            top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
             pointer-events: none;
-            z-index: 10000;
+            z-index: 1000000 !important;
         }
 
         .flow-card {{
-            position: relative;
-            z-index: 10001;
+            position: relative !important;
+            z-index: 1000001 !important;
             width: 90%;
             max-width: 400px;
             background: rgba(11, 19, 62, 0.88);
@@ -248,7 +249,7 @@ game_show_engine = f"""
             display: none;
             animation: cardZoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
         }
-        .flow-card.visible {{ display: block; }}
+        .flow-card.visible {{ display: block !important; }}
 
         @keyframes cardZoomIn {{
             from {{ transform: scale(0.92) translateY(10px); opacity: 0; }}
@@ -608,5 +609,4 @@ game_show_engine = f"""
 </html>
 """
 
-# Render directly into the main Streamlit container without iframe constraints
 st.markdown(game_show_engine, unsafe_allow_html=True)
