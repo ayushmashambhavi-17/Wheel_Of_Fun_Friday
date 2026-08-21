@@ -208,15 +208,18 @@ game_show_engine = """
 
         .celebration-screen {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
             z-index: 100;
             background: rgba(2, 8, 39, 0.96);
             backdrop-filter: blur(30px);
-            opacity: 0; pointer-events: none;
+            opacity: 0; 
+            pointer-events: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2vh 2vw;
             transition: opacity 0.4s ease-out;
         }
         .celebration-screen.active { opacity: 1; pointer-events: auto; }
@@ -237,6 +240,7 @@ game_show_engine = """
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 0 20px;
         }
 
         .flow-card {
