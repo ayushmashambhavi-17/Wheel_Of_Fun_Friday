@@ -236,11 +236,12 @@ game_show_engine = """
             z-index: 105;
             width: 100%;
             max-width: 380px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .flow-card {
@@ -257,7 +258,7 @@ game_show_engine = """
         .flow-card.visible { display: block; }
 
         @keyframes cardZoomIn {
-            from { transform: scale(0.92) translateY(20px); opacity: 0; }
+            from { transform: scale(0.92) translateY(10px); opacity: 0; }
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
