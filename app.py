@@ -79,8 +79,9 @@ game_show_engine = """
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            padding: 3vh 2vw;
+            justify-content: flex-start;
+            padding: 2vh 2vw;
+            gap: 1.5vh;
         }
 
         .bg-particles {
@@ -93,7 +94,6 @@ game_show_engine = """
         .stage-header {
             text-align: center;
             z-index: 10;
-            height: 10vh;
         }
         .stage-header h1 {
             font-family: 'Space Grotesk', sans-serif;
@@ -123,7 +123,6 @@ game_show_engine = """
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: auto 0;
         }
 
         .gold-rim {
@@ -181,7 +180,6 @@ game_show_engine = """
 
         .spin-trigger-wrapper {
             z-index: 10;
-            height: 10vh;
             display: flex;
             align-items: center;
         }
@@ -195,7 +193,7 @@ game_show_engine = """
             font-weight: 900;
             font-size: clamp(1.1rem, 2.5vh, 1.5rem);
             letter-spacing: 1.5px;
-            padding: clamp(12px, 2vh, 16px) clamp(40px, 6vw, 60px);
+            padding: clamp(10px, 1.8vh, 14px) clamp(35px, 5vw, 55px);
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 8px 0 #A01347, 0 15px 30px rgba(255, 64, 129, 0.5);
