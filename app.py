@@ -13,6 +13,25 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# --- REMOVE STREAMLIT PADDING & WHITESPACE ---
+st.markdown(
+    """
+    <style>
+        .block-container {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem !important;
+            padding-left: 0rem !important;
+            padding-right: 0rem !important;
+            max-width: 100% !important;
+        }
+        header {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stApp { background: #020827 !important; }
+    </style>
+""",
+    unsafe_allow_html=True,
+)
+
 # --- SAFE LOGO ASSET LOADER ---
 LOGO_BASE64 = ""
 logo_path = "ufo_logo.png"
@@ -64,8 +83,11 @@ game_show_engine = """
 
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
         
-        .stApp {
-            background: #020827 !important;
+        body, html {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #020827;
         }
 
         .game-stage {
@@ -617,4 +639,5 @@ game_show_engine = game_show_engine.replace("MEMBERS_PLACEHOLDER", serialized_me
 
 game_show_engine = html.unescape(game_show_engine)
 
-components.html(game_show_engine, height=950, scrolling=False)
+# Expanded height to prevent clipping/scrollbar bounds inside Streamlit
+components.html(game_show_engine, height=920, scrolling=False)
