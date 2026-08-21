@@ -50,7 +50,7 @@ MEMBERS = [
 serialized_members = json.dumps(MEMBERS)
 
 # --- LUXURY MIDNIGHT CARNIVAL ENGINE RUNTIME ---
-game_show_engine = f"""
+game_show_engine = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,13 +60,13 @@ game_show_engine = f"""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Space+Grotesk:wght@700;900&display=swap');
 
-        * {{ box-sizing: border-box; margin: 0; padding: 0; user-select: none; }}
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
         
-        .stApp {{
+        .stApp {
             background: #020827 !important;
         }
 
-        .game-stage {{
+        .game-stage {
             position: fixed;
             top: 0;
             left: 0;
@@ -85,18 +85,18 @@ game_show_engine = f"""
             overflow: hidden;
         }
 
-        .bg-particles {{
+        .bg-particles {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1;
         }
 
-        .stage-header {{
+        .stage-header {
             text-align: center;
             z-index: 10;
         }
-        .stage-header h1 {{
+        .stage-header h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: clamp(1.8rem, 4vh, 2.6rem);
@@ -107,7 +107,7 @@ game_show_engine = f"""
             text-transform: uppercase;
             filter: drop-shadow(0 0 15px rgba(255,193,7,.5));
         }
-        .stage-header p {{
+        .stage-header p {
             font-size: clamp(0.7rem, 1.5vh, 0.9rem);
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -116,7 +116,7 @@ game_show_engine = f"""
             margin-top: 2px;
         }
 
-        .wheel-theater {{
+        .wheel-theater {
             position: relative;
             width: clamp(260px, 48vh, 400px);
             height: clamp(260px, 48vh, 400px);
@@ -126,7 +126,7 @@ game_show_engine = f"""
             justify-content: center;
         }
 
-        .gold-rim {{
+        .gold-rim {
             position: absolute;
             width: 101.5%;
             height: 101.5%;
@@ -137,14 +137,14 @@ game_show_engine = f"""
             pointer-events: none;
         }
 
-        #wheelCanvas {{
+        #wheelCanvas {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             z-index: 2;
         }
 
-        .premium-pointer {{
+        .premium-pointer {
             position: absolute;
             top: -12px;
             left: 50%;
@@ -159,7 +159,7 @@ game_show_engine = f"""
             transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .center-hub {{
+        .center-hub {
             position: absolute;
             width: 90px;
             height: 90px;
@@ -173,19 +173,19 @@ game_show_engine = f"""
             overflow: hidden;
         }
 
-        .center-logo {{
+        .center-logo {
             width: 92%;
             height: 92%;
             object-fit: contain;
         }
 
-        .spin-trigger-wrapper {{
+        .spin-trigger-wrapper {
             z-index: 10;
             display: flex;
             align-items: center;
         }
 
-        .spin-cta-btn {{
+        .spin-cta-btn {
             outline: none;
             border: none;
             background: linear-gradient(180deg, #FF5FA2 0%, #FF4081 50%, #D81B60 100%);
@@ -201,14 +201,14 @@ game_show_engine = f"""
             text-transform: uppercase;
             transition: transform 0.1s;
         }
-        .spin-cta-btn:hover {{ transform: scale(1.03); filter: brightness(1.05); }}
-        .spin-cta-btn:active {{
+        .spin-cta-btn:hover { transform: scale(1.03); filter: brightness(1.05); }
+        .spin-cta-btn:active {
             transform: translateY(4px);
             box-shadow: 0 1px 0 #A01347, 0 4px 10px rgba(255, 64, 129, 0.4);
-        }}
+        }
 
         /* --- BULLETPROOF ISOLATED TRUE-CENTER OVERLAY --- */
-        .celebration-screen {{
+        .celebration-screen {
             position: fixed !important;
             top: 0 !important; 
             left: 0 !important; 
@@ -226,16 +226,16 @@ game_show_engine = f"""
             justify-content: center !important;
             transition: opacity 0.4s ease-out;
         }
-        .celebration-screen.active {{ opacity: 1 !important; pointer-events: auto !important; }}
+        .celebration-screen.active { opacity: 1 !important; pointer-events: auto !important; }
 
-        #celebrationCanvas {{
+        #celebrationCanvas {
             position: absolute !important;
             top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
             pointer-events: none;
             z-index: 1000000 !important;
         }
 
-        .flow-card {{
+        .flow-card {
             position: relative !important;
             z-index: 1000001 !important;
             width: 90%;
@@ -249,14 +249,14 @@ game_show_engine = f"""
             display: none;
             animation: cardZoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
         }
-        .flow-card.visible {{ display: block !important; }}
+        .flow-card.visible { display: block !important; }
 
-        @keyframes cardZoomIn {{
-            from {{ transform: scale(0.92) translateY(10px); opacity: 0; }}
-            to {{ transform: scale(1) translateY(0); opacity: 1; }}
-        }}
+        @keyframes cardZoomIn {
+            from { transform: scale(0.92) translateY(10px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
 
-        .avatar-circle-halo {{
+        .avatar-circle-halo {
             width: clamp(48px, 7vh, 60px);
             height: clamp(48px, 7vh, 60px);
             border-radius: 50%;
@@ -265,21 +265,21 @@ game_show_engine = f"""
             padding: 2px;
             box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
         }
-        .avatar-inner {{
+        .avatar-inner {
             width: 100%; height: 100%;
             border-radius: 50%; background: #050D45;
             display: flex; align-items: center; justify-content: center;
             font-size: clamp(1.2rem, 2.5vh, 1.5rem);
         }
 
-        .spotlight-sub {{
+        .spotlight-sub {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: clamp(0.7rem, 1.4vh, 0.9rem);
             color: #FFC107; letter-spacing: 3px;
             text-transform: uppercase; margin-bottom: 4px;
         }
-        .spotlight-name {{
+        .spotlight-name {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: clamp(1.6rem, 4vh, 2.4rem);
@@ -288,7 +288,7 @@ game_show_engine = f"""
             margin-bottom: 16px; text-transform: uppercase;
         }
 
-        .flow-actions {{
+        .flow-actions {
             width: 100%;
             display: flex;
             justify-content: center;
@@ -296,7 +296,7 @@ game_show_engine = f"""
             flex-wrap: wrap;
         }
 
-        .btn-base {{
+        .btn-base {
             border: none; outline: none; color: #FFF;
             font-family: 'Space Grotesk', sans-serif; font-weight: 900;
             font-size: clamp(0.75rem, 1.5vh, 0.95rem);
@@ -306,12 +306,12 @@ game_show_engine = f"""
             transition: all 0.15s ease-out;
             display: inline-flex; align-items: center; gap: 6px;
         }
-        .btn-base:hover {{ transform: scale(1.03); filter: brightness(1.1); }}
-        .btn-base:active {{ transform: scale(0.98); }}
+        .btn-base:hover { transform: scale(1.03); filter: brightness(1.1); }
+        .btn-base:active { transform: scale(0.98); }
 
-        .btn-green  {{ background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 6px 15px rgba(16,185,129,0.3); }}
-        .btn-red    {{ background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 6px 15px rgba(239,68,68,0.3); }}
-        .btn-purple {{ background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 6px 15px rgba(108,43,217,0.3); width: 85%; justify-content: center; }}
+        .btn-green  { background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 6px 15px rgba(16,185,129,0.3); }
+        .btn-red    { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 6px 15px rgba(239,68,68,0.3); }
+        .btn-purple { background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 6px 15px rgba(108,43,217,0.3); width: 85%; justify-content: center; }
     </style>
 </head>
 <body>
@@ -328,7 +328,7 @@ game_show_engine = f"""
             <div class="premium-pointer" id="pointerPin"></div>
             <div class="gold-rim"></div>
             <div class="center-hub">
-                <img src="data:image/png;base64,{LOGO_BASE64}" class="center-logo" alt="Logo"/>
+                <img src="data:image/png;base64,LOGO_PLACEHOLDER" class="center-logo" alt="Logo"/>
             </div>
             <canvas id="wheelCanvas" width="600" height="600"></canvas>
         </div>
@@ -362,7 +362,7 @@ game_show_engine = f"""
     </div>
 
     <script>
-        let players = {serialized_members};
+        let players = MEMBERS_PLACEHOLDER;
         const segmentGradients = [
             ["#6C2BD9", "#6120C2"],
             ["#D63384", "#E83E8C"],
@@ -376,7 +376,7 @@ game_show_engine = f"""
         let isSpinning = false;
         let activeSelectedPlayer = "";
 
-        function drawWheel() {{
+        function drawWheel() {
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const radius = canvas.width / 2 - 10;
@@ -387,7 +387,7 @@ game_show_engine = f"""
             
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            for (let i = 0; i < numSlices; i++) {{
+            for (let i = 0; i < numSlices; i++) {
                 const startAngle = currentAngleOffset + (i * sliceAngle);
                 const endAngle = startAngle + sliceAngle;
 
@@ -414,78 +414,78 @@ game_show_engine = f"""
                 ctx.fillStyle = "#FFFFFF";
                 
                 const computedFontSize = Math.max(9, Math.min(13, parseFloat(340 / numSlices)));
-                ctx.font = `800 ${{computedFontSize}}px 'Plus Jakarta Sans', sans-serif`;
+                ctx.font = `800 ${computedFontSize}px 'Plus Jakarta Sans', sans-serif`;
                 ctx.textAlign = "right";
                 ctx.textBaseline = "middle";
                 
                 let nameStr = players[i];
                 const maxCharacterLength = Math.floor(radius * 0.05);
-                if (nameStr.length > maxCharacterLength) {{
+                if (nameStr.length > maxCharacterLength) {
                     nameStr = nameStr.substring(0, maxCharacterLength - 2) + "..";
-                }}
+                }
                 
                 ctx.fillText(nameStr, radius - 20, 0);
                 ctx.restore();
-            }}
-        }}
+            }
+        }
 
         const bgCanvas = document.getElementById("ambientEngine");
         const bgCtx = bgCanvas.getContext("2d");
         let ambientStars = [];
 
-        function resizeAmbientCanvas() {{
+        function resizeAmbientCanvas() {
             bgCanvas.width = window.innerWidth;
             bgCanvas.height = window.innerHeight;
-        }}
+        }
         window.addEventListener("resize", resizeAmbientCanvas);
         resizeAmbientCanvas();
 
-        const goldRGBs = [{{r: 255, g: 213, b: 74}}, {{r: 255, g: 193, b: 7}}, {{r: 255, g: 235, b: 59}}];
-        for(let i=0; i<35; i++) {{
-            ambientStars.push({{
+        const goldRGBs = [{r: 255, g: 213, b: 74}, {r: 255, g: 193, b: 7}, {r: 255, g: 235, b: 59}];
+        for(let i=0; i<35; i++) {
+            ambientStars.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
                 size: Math.random() * 2.5 + 1,
                 alpha: Math.random() * 0.4 + 0.4,
                 speed: Math.random() * 0.008 + 0.003,
                 colorProfile: goldRGBs[Math.floor(Math.random() * goldRGBs.length)]
-            }});
-        }}
+            });
+        }
 
-        function loopAmbientBackground() {{
+        function loopAmbientBackground() {
             bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-            ambientStars.forEach(s => {{
+            ambientStars.forEach(s => {
                 s.alpha += s.speed;
-                if(s.alpha > 0.8 || s.alpha < 0.4) {{ s.speed = -s.speed; }}
+                if(s.alpha > 0.8 || s.alpha < 0.4) { s.speed = -s.speed; }
                 bgCtx.beginPath();
                 bgCtx.arc(s.x, s.y, s.size, 0, Math.PI*2);
-                bgCtx.fillStyle = `rgba(${{s.colorProfile.r}}, ${{s.colorProfile.g}}, ${{s.colorProfile.b}}, ${{Math.max(0.4, Math.min(0.8, s.alpha))}})`;
+                bgCtx.fillStyle = `rgba(${s.colorProfile.r}, ${s.colorProfile.g}, ${s.colorProfile.b}, ${Math.max(0.4, Math.min(0.8, s.alpha))})`;
                 bgCtx.fill();
-            }});
+            });
             requestAnimationFrame(loopAmbientBackground);
-        }}
+        }
         loopAmbientBackground();
 
         const pointerPin = document.getElementById("pointerPin");
         let lastSegmentLogged = -1;
 
-        function runPointerVisualFeedback(velocity) {{
-            if (velocity > 0.015) {{
+        function runPointerVisualFeedback(velocity) {
+            if (velocity > 0.015) {
                 const numSlices = players.length;
                 const sliceAngle = (2 * Math.PI) / numSlices;
                 const normalizedAngle = (1.5 * Math.PI - currentAngleOffset) % (2 * Math.PI);
                 const standardAngle = normalizedAngle < 0 ? normalizedAngle + 2 * Math.PI : normalizedAngle;
                 const activeIndex = Math.floor(standardAngle / sliceAngle) % numSlices;
 
-                if (activeIndex !== lastSegmentLogged) {{
+                if (activeIndex !== lastSegmentLogged) {
                     lastSegmentLogged = activeIndex;
                     pointerPin.style.transform = "translateX(-50%) rotate(-18deg)";
                     setTimeout(() => pointerPin.style.transform = "translateX(-50%) rotate(0deg)", 50);
-                }}
-            }}
-        }}
+                }
+            }
+        }
 
-        document.getElementById("megaSpinBtn").addEventListener("click", () => {{
+        document.getElementById("megaSpinBtn").addEventListener("click", () => {
             if (isSpinning || players.length === 0) return;
             isSpinning = true;
             document.getElementById("megaSpinBtn").disabled = true;
@@ -494,7 +494,7 @@ game_show_engine = f"""
             const decayFactor = 0.985; 
             const cutOffThreshold = 0.0008;
 
-            function processFrame() {{
+            function processFrame() {
                 momentumForce *= decayFactor;
                 currentAngleOffset += momentumForce;
                 currentAngleOffset %= (2 * Math.PI);
@@ -502,17 +502,17 @@ game_show_engine = f"""
                 drawWheel();
                 runPointerVisualFeedback(momentumForce);
 
-                if (momentumForce > cutOffThreshold) {{
+                if (momentumForce > cutOffThreshold) {
                     requestAnimationFrame(processFrame);
-                }} else {{
+                } else {
                     isSpinning = false;
                     evaluateSynchronizedWinner();
-                }}
-            }}
+                }
+            }
             processFrame();
-        }});
+        });
 
-        function evaluateSynchronizedWinner() {{
+        function evaluateSynchronizedWinner() {
             const numSlices = players.length;
             const sliceAngle = (2 * Math.PI) / numSlices;
             let exactTargetAngle = (1.5 * Math.PI - currentAngleOffset) % (2 * Math.PI);
@@ -528,43 +528,43 @@ game_show_engine = f"""
             
             initializeConfettiSparks();
             loopCelebrationScreen();
-        }}
+        }
 
-        document.getElementById("isPresentBtn").addEventListener("click", () => {{
+        document.getElementById("isPresentBtn").addEventListener("click", () => {
             players = players.filter(p => p !== activeSelectedPlayer);
             drawWheel();
             document.getElementById("flowStep1").classList.remove("visible");
             document.getElementById("flowStep2").classList.add("visible");
             document.getElementById("turnPlayerTitle").innerText = activeSelectedPlayer + ", IT'S YOUR TURN!";
-        }});
+        });
 
-        document.getElementById("isAbsentBtn").addEventListener("click", () => {{
+        document.getElementById("isAbsentBtn").addEventListener("click", () => {
             players = players.filter(p => p !== activeSelectedPlayer);
             drawWheel();
             dismissOverlayToWheel();
         });
 
-        document.getElementById("backToWheelBtn").addEventListener("click", () => {{
+        document.getElementById("backToWheelBtn").addEventListener("click", () => {
             dismissOverlayToWheel();
-        }});
+        });
 
-        function dismissOverlayToWheel() {{
+        function dismissOverlayToWheel() {
             document.getElementById("victoryScreen").classList.remove("active");
             confettiSparks = [];
             document.getElementById("megaSpinBtn").disabled = false;
-        }}
+        }
 
         let confettiSparks = [];
         const celCanvas = document.getElementById("celebrationCanvas");
         const celCtx = celCanvas.getContext("2d");
 
-        function initializeConfettiSparks() {{
+        function initializeConfettiSparks() {
             celCanvas.width = window.innerWidth;
             celCanvas.height = window.innerHeight;
             confettiSparks = [];
             const colorPalette = ["#FFD700", "#FF4081", "#6C2BD9", "#2F62CC", "#22B8CF"];
-            for (let i = 0; i < 80; i++) {{
-                confettiSparks.push({{
+            for (let i = 0; i < 80; i++) {
+                confettiSparks.push({
                     x: Math.random() * celCanvas.width,
                     y: Math.random() * -60 - 20,
                     rotation: Math.random() * 360,
@@ -574,16 +574,16 @@ game_show_engine = f"""
                     width: Math.random() * 8 + 6,
                     height: Math.random() * 12 + 8,
                     color: colorPalette[Math.floor(Math.random() * colorPalette.length)]
-                }});
-            }}
-        }}
+                });
+            }
+        }
 
-        function loopCelebrationScreen() {{
+        function loopCelebrationScreen() {
             celCtx.clearRect(0, 0, celCanvas.width, celCanvas.height);
             let hasActiveConfetti = false;
 
-            confettiSparks.forEach(p => {{
-                if (p.y < celCanvas.height + 20) {{
+            confettiSparks.forEach(p => {
+                if (p.y < celCanvas.height + 20) {
                     hasActiveConfetti = true;
                     p.y += p.vy;
                     p.x += p.vx;
@@ -595,18 +595,22 @@ game_show_engine = f"""
                     celCtx.fillStyle = p.color;
                     celCtx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
                     celCtx.restore();
-                }}
-            }});
+                }
+            });
 
-            if (hasActiveConfetti && document.getElementById("victoryScreen").classList.contains("active")) {{
+            if (hasActiveConfetti && document.getElementById("victoryScreen").classList.contains("active")) {
                 requestAnimationFrame(loopCelebrationScreen);
-            }}
-        }}
+            }
+        }
 
         drawWheel();
     </script>
 </body>
 </html>
 """
+
+# Inject dynamic assets cleanly without f-string brackets collision
+game_show_engine = game_show_engine.replace("LOGO_PLACEHOLDER", LOGO_BASE64)
+game_show_engine = game_show_engine.replace("MEMBERS_PLACEHOLDER", serialized_members)
 
 st.markdown(game_show_engine, unsafe_allow_html=True)
