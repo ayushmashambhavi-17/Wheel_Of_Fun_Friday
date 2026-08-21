@@ -117,8 +117,8 @@ game_show_engine = """
 
         .wheel-theater {
             position: relative;
-            width: clamp(350px, 72vh, 600px);
-            height: clamp(350px, 72vh, 600px);
+            width: clamp(260px, 50vh, 420px);
+            height: clamp(260px, 50vh, 420px);
             z-index: 5;
             display: flex;
             align-items: center;
@@ -149,8 +149,8 @@ game_show_engine = """
             top: -12px;
             left: 50%;
             transform: translateX(-50%) rotate(0deg);
-            width: clamp(30px, 5vh, 42px);
-            height: clamp(40px, 6.5vh, 52px);
+            width: clamp(24px, 4vh, 34px);
+            height: clamp(32px, 5.5vh, 42px);
             background: linear-gradient(185deg, #FFF3B0 0%, #FFD700 50%, #D4AF37 100%);
             clip-path: polygon(50% 100%, 0 0, 100% 0);
             filter: drop-shadow(0 0 15px rgba(255,215,0,.8));
@@ -161,8 +161,8 @@ game_show_engine = """
 
         .center-hub {
             position: absolute;
-            width: 140px;
-            height: 140px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background: #ffffff;
             box-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,215,0,0.5), 0 5px 25px rgba(0,0,0,0.6);
@@ -384,7 +384,7 @@ game_show_engine = """
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const radius = canvas.width / 2 - 10;
-            const centerGap = 85;
+            const centerGap = 65;
             const numSlices = players.length;
             if (numSlices === 0) return;
             const sliceAngle = (2 * Math.PI) / numSlices;
@@ -633,5 +633,4 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Render cleanly using components.html instead of an iframe wrapper to bypass blank screen issues
 components.html(game_show_engine, height=850, scrolling=False)
