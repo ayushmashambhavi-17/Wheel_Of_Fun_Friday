@@ -232,7 +232,7 @@ game_show_engine = """
             position: relative;
             z-index: 105;
             width: 100%;
-            max-width: 500px;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -241,12 +241,12 @@ game_show_engine = """
 
         .flow-card {
             width: 100%;
-            background: rgba(11, 19, 62, 0.85);
+            background: rgba(11, 19, 62, 0.88);
             border: 2px solid rgba(255, 213, 79, 0.3);
-            border-radius: 32px;
-            padding: clamp(30px, 5vh, 45px);
+            border-radius: 24px;
+            padding: clamp(20px, 3vh, 30px) clamp(20px, 3vw, 25px);
             text-align: center;
-            box-shadow: 0 35px 75px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255,255,255,0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255,255,255,0.08);
             display: none;
             animation: cardZoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
         }
@@ -258,61 +258,61 @@ game_show_engine = """
         }
 
         .avatar-circle-halo {
-            width: clamp(70px, 10vh, 90px);
-            height: clamp(70px, 10vh, 90px);
+            width: clamp(48px, 7vh, 60px);
+            height: clamp(48px, 7vh, 60px);
             border-radius: 50%;
-            margin: 0 auto 15px auto;
+            margin: 0 auto 10px auto;
             background: linear-gradient(135deg, #FFD54F 0%, #D63384 100%);
-            padding: 3px;
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+            padding: 2px;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
         }
         .avatar-inner {
             width: 100%; height: 100%;
             border-radius: 50%; background: #050D45;
             display: flex; align-items: center; justify-content: center;
-            font-size: clamp(1.8rem, 4vh, 2.2rem);
+            font-size: clamp(1.2rem, 2.5vh, 1.5rem);
         }
 
         .spotlight-sub {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: clamp(0.8rem, 1.8vh, 1.1rem);
-            color: #FFC107; letter-spacing: 4px;
-            text-transform: uppercase; margin-bottom: 6px;
+            font-size: clamp(0.7rem, 1.4vh, 0.9rem);
+            color: #FFC107; letter-spacing: 3px;
+            text-transform: uppercase; margin-bottom: 4px;
         }
         .spotlight-name {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
-            font-size: clamp(2.2rem, 6vh, 3.8rem);
-            color: #FFF; letter-spacing: -1px;
-            text-shadow: 0 0 25px rgba(255, 213, 79, 0.4);
-            margin-bottom: 25px; text-transform: uppercase;
+            font-size: clamp(1.6rem, 4vh, 2.4rem);
+            color: #FFF; letter-spacing: -0.5px;
+            text-shadow: 0 0 20px rgba(255, 213, 79, 0.4);
+            margin-bottom: 16px; text-transform: uppercase;
         }
 
         .flow-actions {
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .btn-base {
             border: none; outline: none; color: #FFF;
             font-family: 'Space Grotesk', sans-serif; font-weight: 900;
-            font-size: clamp(0.9rem, 2vh, 1.15rem);
-            padding: clamp(12px, 2vh, 16px) clamp(25px, 4vw, 40px);
-            border-radius: 50px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1.5px;
+            font-size: clamp(0.75rem, 1.5vh, 0.95rem);
+            padding: clamp(9px, 1.4vh, 12px) clamp(16px, 2.5vw, 24px);
+            border-radius: 40px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 1px;
             transition: all 0.15s ease-out;
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex; align-items: center; gap: 6px;
         }
         .btn-base:hover { transform: scale(1.03); filter: brightness(1.1); }
         .btn-base:active { transform: scale(0.98); }
 
-        .btn-green  { background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16,185,129,0.3); }
-        .btn-red    { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 8px 20px rgba(239,68,68,0.3); }
-        .btn-purple { background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 8px 20px rgba(108,43,217,0.3); width: 85%; justify-content: center; }
+        .btn-green  { background: linear-gradient(135deg, #10B981 0%, #059669 100%); box-shadow: 0 6px 15px rgba(16,185,129,0.3); }
+        .btn-red    { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); box-shadow: 0 6px 15px rgba(239,68,68,0.3); }
+        .btn-purple { background: linear-gradient(135deg, #6C2BD9 0%, #4F46E5 100%); box-shadow: 0 6px 15px rgba(108,43,217,0.3); width: 85%; justify-content: center; }
     </style>
 </head>
 <body>
@@ -356,7 +356,7 @@ game_show_engine = """
                 <div class="avatar-circle-halo" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);"><div class="avatar-inner">🔥</div></div>
                 <p class="spotlight-sub" style="color: #10B981;">The Stage Is Yours!</p>
                 <h2 class="spotlight-name" id="turnPlayerTitle">IT'S YOUR TURN!</h2>
-                <div class="flow-actions" style="margin-top: 10px;">
+                <div class="flow-actions" style="margin-top: 6px;">
                     <button class="btn-base btn-purple" id="backToWheelBtn">🔙 Back To Wheel</button>
                 </div>
             </div>
