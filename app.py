@@ -1,21 +1,51 @@
-import streamlit as st
-import json
 import base64
+import json
+import streamlit as st
 import streamlit.components.v1 as components
+
+
+def image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+
+
+LOGO_BASE64 = image_to_base64("ufo_logo.png")
 
 # --- IMMERSIVE VIEWPORT CONFIGURATION SETUP ---
 st.set_page_config(
     page_title="Arena | Name Picker Wheel",
     page_icon="🎯",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="collapsed",
 )
 
 # --- CURATED TEAM ROSTER ASSET MATRIX ---
 MEMBERS = [
-    "Ajaz", "Amit", "Ankur","Bhabesh", "Gautam", "Jeet", "Kartiki", "Obaiah", "Irfan", "Neha",
-    "Nishank", "Prasad", "Pratik", "Pritesh", "Roshni","Sampada", "Shailavi", "Shubham", "Shubhangi", 
-    "Soham", "Sonali", "Soumyashree", "Swanand", "Vedant", "Yasmin"
+    "Ajaz",
+    "Amit",
+    "Ankur",
+    "Bhabesh",
+    "Gautam",
+    "Jeet",
+    "Kartiki",
+    "Obaiah",
+    "Irfan",
+    "Neha",
+    "Nishank",
+    "Prasad",
+    "Pratik",
+    "Pritesh",
+    "Roshni",
+    "Sampada",
+    "Shailavi",
+    "Shubham",
+    "Shubhangi",
+    "Soham",
+    "Sonali",
+    "Soumyashree",
+    "Swanand",
+    "Vedant",
+    "Yasmin",
 ]
 
 # --- DATA SERIALIZATION LAYER ---
@@ -91,8 +121,8 @@ game_show_engine = """
         /* HERO WHEEL THEATER METALLIC FRAME */
         .wheel-theater {
             position: relative;
-            width: clamp(320px, 62vh, 520px);
-            height: clamp(320px, 62vh, 520px);
+            width: clamp(500px, 78vh, 700px);
+            height: clamp(500px, 78vh, 700px);
             z-index: 5;
             display: flex;
             align-items: center;
@@ -140,20 +170,25 @@ game_show_engine = """
         /* GOLD COIN CENTER HUB */
         .center-hub {
             position: absolute;
-            width: clamp(60px, 11vh, 84px);
-            height: clamp(60px, 11vh, 84px);
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
-            background: radial-gradient(circle, #FFF9C4 0%, #FFE082 40%, #FFD700 75%, #F4C430 100%);
-            box-shadow: 
-                inset 0 0 12px rgba(255,255,255,0.8),
-                0 6px 20px rgba(0,0,0,0.6), 
-                0 0 25px rgba(255, 215, 0, 0.6);
+            background: #ffffff;
+            box-shadow:
+                0 0 20px rgba(255,255,255,0.5),
+                0 0 40px rgba(255,215,0,0.5),
+                0 5px 25px rgba(0,0,0,0.6);
             z-index: 6;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1.2rem, 2.5vh, 1.8rem);
-            animation: hubGlowPulse 2s infinite ease-in-out;
+            overflow: hidden;
+        }
+
+        .center-logo {
+            width: 92%;
+            height: 92%;
+            object-fit: contain;
         }
 
         @keyframes hubGlowPulse {
@@ -316,8 +351,10 @@ game_show_engine = """
         <div class="wheel-theater" id="wheelTheater">
             <div class="premium-pointer" id="pointerPin"></div>
             <div class="gold-rim"></div>
-            <div class="center-hub">🎯</div>
-            <canvas id="wheelCanvas" width="600" height="600"></canvas>
+            <div class="center-hub">
+                <img src="data:image/png;base64,__LOGO_BASE64__" class="center-logo" alt="UFO Logo"/>
+            </div>
+            <canvas id="wheelCanvas" width="700" height="700"></canvas>
         </div>
 
         <div class="spin-trigger-wrapper">
@@ -377,6 +414,7 @@ game_show_engine = """
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const radius = canvas.width / 2 - 12;
+            const centerGap = 100;
             const numSlices = players.length;
             const sliceAngle = (2 * Math.PI) / numSlices;
             
@@ -393,8 +431,10 @@ game_show_engine = """
                 fillGrad.addColorStop(1, "#020827");
 
                 ctx.beginPath();
-                ctx.moveTo(cx, cy);
-                ctx.arc(cx, cy, radius, startAngle, endAngle);
+                ctx.arc(cx, cy, radius, startAngle, endAngle, false);
+                ctx.arc(cx, cy, centerGap, endAngle, startAngle, true);
+                ctx.closePath();
+                
                 ctx.fillStyle = fillGrad;
                 ctx.fill();
 
@@ -418,7 +458,7 @@ game_show_engine = """
                     nameStr = nameStr.substring(0, maxCharacterLength - 2) + "..";
                 }
                 
-                ctx.fillText(nameStr, radius - 35, 0);
+                ctx.fillText(nameStr, radius - 25, 0);
                 ctx.restore();
             }
         }
@@ -536,7 +576,6 @@ game_show_engine = """
 
         // ACCEPT / PRESENT CLICKED -> REMOVE NAME FROM WHEEL PERMANENTLY & SHOW TURN
         document.getElementById("isPresentBtn").addEventListener("click", () => {
-            // Remove the accepted player from the roster so they never appear again
             players = players.filter(p => p !== activeSelectedPlayer);
             drawWheel();
 
@@ -619,10 +658,14 @@ game_show_engine = """
 """
 
 # --- CONTEXT STRING DATA INTERPOLATION PIPELINE ---
-game_show_engine = game_show_engine.replace("__PLAYERS_PLACEHOLDER__", serialized_members)
+game_show_engine = game_show_engine.replace(
+    "__PLAYERS_PLACEHOLDER__", serialized_members
+)
+game_show_engine = game_show_engine.replace("__LOGO_BASE64__", LOGO_BASE64)
 
 # --- CSS FULL-SCREEN IFRAME PORT BUFFER SAFEGUARD OVERRIDES ---
-st.markdown("""
+st.markdown(
+    """
     <style>
         [data-testid="stAppViewContainer"], .main, .block-container {
             padding: 0 !important; margin: 0 !important; max-width: 100vw !important; height: 100vh !important; overflow: hidden !important;
@@ -631,12 +674,16 @@ st.markdown("""
         iframe { border: none !important; width: 100vw !important; height: 100vh !important; overflow: hidden !important; display: block !important; }
         div[data-testid="stBlock"] { padding: 0 !important; }
     </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
+
 
 # --- BASE64 DATA PACKAGED PIPELINE MOUNT ---
 def run_app_securely(html_string):
-    b64_html = base64.b64encode(html_string.encode('utf-8')).decode('utf-8')
+    b64_html = base64.b64encode(html_string.encode("utf-8")).decode("utf-8")
     data_uri = f"data:text/html;base64,{b64_html}"
     components.iframe(src=data_uri, height=950, scrolling=False)
+
 
 run_app_securely(game_show_engine)
