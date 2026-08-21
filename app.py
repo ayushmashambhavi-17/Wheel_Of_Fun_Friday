@@ -1,7 +1,8 @@
 import base64
-import json
+import html
 import os
 import streamlit as st
+import streamlit.components.v1 as components
 
 # --- VIEWPORT & CONFIGURATION ---
 st.set_page_config(
@@ -613,4 +614,6 @@ game_show_engine = """
 game_show_engine = game_show_engine.replace("LOGO_PLACEHOLDER", LOGO_BASE64)
 game_show_engine = game_show_engine.replace("MEMBERS_PLACEHOLDER", serialized_members)
 
-st.markdown(game_show_engine, unsafe_allow_html=True)
+game_show_engine = html.unescape(game_show_engine)
+
+components.html(game_show_engine, height=950, scrolling=False)
